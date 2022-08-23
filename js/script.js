@@ -25,8 +25,14 @@ if(!(isNaN(kilometri) || isNaN(anni))){
         prezzoBigliettoFinale = prezzoBigliettoDaAcquistare;
     }
 
-    // mostra a schermo il risultato finale
-    document.getElementById("calcoloPrezzo").innerHTML = `Il prezzo del biglietto ammonta a € ${parseFloat(prezzoBigliettoFinale).toFixed(2)}`;
+    // mostra a schermo il risultato finale in base all'età
+    if(anni < ETA_MINIMA){
+        document.getElementById("calcoloPrezzo").innerHTML = `Il prezzo del biglietto per un minorenne, con km ${kilometri}, ammonta a € ${parseFloat(prezzoBigliettoFinale).toFixed(2)}`;
+    } else if(anni > ETA_MASSIMA){
+        document.getElementById("calcoloPrezzo").innerHTML = `Il prezzo del biglietto per un over 65, con km ${kilometri}, ammonta a € ${parseFloat(prezzoBigliettoFinale).toFixed(2)}`;
+    } else {
+        document.getElementById("calcoloPrezzo").innerHTML = `Il prezzo del biglietto per km ${kilometri}, ammonta a € ${parseFloat(prezzoBigliettoFinale).toFixed(2)}`;
+    }
 } else {
     alert("ATTENZIONE: Il valore inserito non è corretto, aggiornare la pagina");
 }
